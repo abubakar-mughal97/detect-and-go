@@ -14,7 +14,7 @@
             <mesh filename="package://carter_description/meshes/chassis.obj" />
          </geometry>
          <material name="chassis_material">
-            <color rgba="0.5 0.5 0.5 1.0" />
+            <color rgba="0.5 0.5 0.5 0.9" />
          </material>
       </visual>
       <collision>
@@ -36,7 +36,7 @@
             <mesh filename="package://carter_description/meshes/side_wheel.obj" />
          </geometry>
          <material name="wheel_material">
-            <color rgba="0.5 0.5 0.5 0.8" />
+            <color rgba="0 0 0 0.9" />
          </material>
       </visual>
       <collision>
@@ -58,7 +58,7 @@
             <mesh filename="package://carter_description/meshes/side_wheel.obj" />
          </geometry>
          <material name="wheel_material">
-            <color rgba="0.5 0.5 0.5 0.8" />
+            <color rgba="0 0 0  0.9" />
          </material>
       </visual>
       <collision>

@@ -5,7 +5,7 @@
 
   <link name="lidar_link">
     <visual>
-      <origin xyz="-0.05 0 0.42" rpy="0 0 0"/>
+      <origin xyz="-0.0 0 0.0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.01" length="0.01" />
       </geometry>
@@ -28,14 +28,14 @@
   <joint name='lidar_sensor_joint' type='fixed'>
     <parent link="chassis_link"/>
     <child link="lidar_link"/>
-    <origin rpy="0 0 0.42" xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="-0.05 0 0.42" />
 
   </joint>
 
   <gazebo reference="lidar_link">
-    <sensor name="lidar" type='gpu_lidar'>
+    <sensor name="scan" type='gpu_lidar'>
       <pose>0 0 0.2 0 0 0</pose>
-      <topic>lidar</topic>
+      <topic>scan</topic>
       <update_rate>10</update_rate>
       <ray>
         <scan>

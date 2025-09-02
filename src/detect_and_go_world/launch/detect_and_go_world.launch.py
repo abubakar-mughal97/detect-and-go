@@ -71,15 +71,23 @@ def generate_launch_description():
         ],
     )
 
+    world_path = os.path.join(
+        get_package_share_directory("detect_and_go_world"),
+        "world",
+        "detect_and_go_world.sdf",
+    )
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
-                PathJoinSubstitution(
-                    [FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"]
+                os.path.join(
+                    get_package_share_directory("ros_gz_sim"),
+                    "launch",
+                    "gz_sim.launch.py",
                 )
             ]
         ),
-        launch_arguments=[("gz_args", [" -r -v 4 empty.sdf"])],
+        launch_arguments={"gz_args": f"-r {world_path}"}.items(),
     )
 
     gz_ros2_bridge = Node(
@@ -100,19 +108,6 @@ def generate_launch_description():
         ],
     )
 
-    rviz_file = "rviz.rviz"
-    rviz_path = PathJoinSubstitution(
-        [get_package_share_directory("carter_description"), rviz_file]
-    )
-
-    rviz2_node = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="screen",
-        arguments=["-d", rviz_path],
-    )
-
     return LaunchDescription(
         [
             model_arg,
@@ -121,6 +116,5 @@ def generate_launch_description():
             gazebo,
             gz_spawn_entity,
             gz_ros2_bridge,
-            rviz2_node,
         ]
     )
